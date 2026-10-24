@@ -94,6 +94,15 @@ footer { max-width: 1440px; margin: 0 auto; padding: 28px 10vw; display: flex; a
 .floating-instagram { position: fixed; right: 24px; bottom: 152px; z-index: 9; width: 54px; height: 54px; border-radius: 50%; background: #e1306c; color: white; display: grid; place-items: center; box-shadow: 0 8px 20px rgba(23, 34, 37, .2); }
 .floating-instagram svg { width: 24px; height: 24px; }
 .contact h2 em, .contact-cta p { color: var(--ink); }
+.holiday-hero { background: #f4e7df; border-bottom: 1px solid #e5c7bb; }
+.holiday-hero { box-shadow: 0 0 0 100vmax #f4e7df; clip-path: inset(0 -100vmax); }
+.holiday-hero .eyebrow { color: #9b2f2a; }
+.holiday-hero .eyebrow span { background: #9b2f2a; }
+.holiday-hero h1 em { color: #1d6b4f; }
+.holiday-hero .hero-proof strong { color: #9b2f2a; }
+.christmas-tree-sticker { position: absolute; right: -60px; top: -60px; z-index: 2; width: 150px; height: auto; filter: drop-shadow(0 6px 6px rgba(23, 34, 37, .2)); transform: rotate(6deg); animation: tree-lights 1.1s steps(2, end) infinite; }
+@keyframes tree-lights { 50% { filter: drop-shadow(0 6px 6px rgba(23, 34, 37, .2)) brightness(1.18); } }
+@keyframes sticker-bounce { 50% { transform: rotate(5deg) translateY(-3px); } }
 .site-header .bag-button span { top: -4px !important; right: -5px; width: auto; height: auto; border-radius: 0; background: transparent; color: var(--ink); line-height: 1; text-align: center; }
 .floating-cart span { line-height: 19px; text-align: center; }
 .product-grid { gap: 16px 3px; }
