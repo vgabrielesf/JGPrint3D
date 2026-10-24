@@ -15,6 +15,36 @@ import produto13 from './assets/produto-13.jpeg'
 import produto14 from './assets/produto-14.jpeg'
 import logo1 from './assets/logo1.png'
 
+const newPetImages = import.meta.glob('./assets/WhatsApp*.jpeg', { eager: true, import: 'default', query: '?url' })
+const newPetImageOrder = [
+  'WhatsApp Image 2026-10-24 at 14.04.50 (1).jpeg',
+  'WhatsApp Image 2026-10-24 at 14.05.15 (1).jpeg',
+  'WhatsApp Image 2026-10-24 at 14.05.14 (2).jpeg',
+  'WhatsApp Image 2026-10-24 at 14.05.13 (2).jpeg',
+  'WhatsApp Image 2026-10-24 at 14.05.14 (1).jpeg',
+  'WhatsApp Image 2026-10-24 at 14.05.14.jpeg',
+  'WhatsApp Image 2026-10-24 at 14.05.13 (3).jpeg',
+  'WhatsApp Image 2026-10-24 at 14.05.14 (3).jpeg',
+  'WhatsApp Image 2026-10-24 at 14.05.14 (5).jpeg',
+  'WhatsApp Image 2026-10-24 at 14.05.15.jpeg',
+  'WhatsApp Image 2026-10-24 at 14.05.14 (4).jpeg',
+  'WhatsApp Image 2026-10-24 at 14.04.52.jpeg',
+  'WhatsApp Image 2026-10-24 at 14.04.50.jpeg',
+  'WhatsApp Image 2026-10-24 at 14.04.50 (2).jpeg',
+  'WhatsApp Image 2026-10-24 at 14.05.13 (1).jpeg',
+  'WhatsApp Image 2026-10-24 at 14.05.15 (3).jpeg',
+  'WhatsApp Image 2026-10-24 at 14.05.16.jpeg',
+  'WhatsApp Image 2026-10-24 at 14.05.15 (2).jpeg',
+  'WhatsApp Image 2026-10-24 at 14.05.12 (1).jpeg',
+  'WhatsApp Image 2026-10-24 at 14.05.13.jpeg',
+  'WhatsApp Image 2026-10-24 at 14.05.17 (1).jpeg',
+  'WhatsApp Image 2026-10-24 at 14.05.16 (1).jpeg',
+  'WhatsApp Image 2026-10-24 at 14.05.17.jpeg',
+  'WhatsApp Image 2026-10-24 at 14.05.17 (2).jpeg',
+  'WhatsApp Image 2026-10-24 at 14.05.17 (3).jpeg',
+  'WhatsApp Image 2026-10-24 at 14.05.12.jpeg',
+]
+
 const products = [
   { name: 'Pet personalizado (Oreo)', category: 'Pets', price: 'R$ 79,90', image: produto01, tag: 'Mais pedido' },
   { name: 'Pet personalizado (Baguera)', category: 'Pets', price: 'R$ 79,90', image: produto02, tag: 'Presente' },
@@ -30,6 +60,7 @@ const products = [
   { name: 'Luminária Lua', category: 'Luminárias', price: 'R$ 139,99', image: produto12, tag: 'Edição especial' },
   { name: 'Pet personalizado (Madalena)', category: 'Pets', price: 'R$ 79,90', image: produto13, tag: '' },
   { name: 'Pet personalizado (Lorenzo)', category: 'Pets', price: 'R$ 79,90', image: produto14, tag: 'Mais pedido' },
+  ...Object.entries(newPetImages).sort(([firstPath], [secondPath]) => newPetImageOrder.indexOf(firstPath.split('/').pop()) - newPetImageOrder.indexOf(secondPath.split('/').pop())).map(([, image], index) => ({ name: `Pet personalizado (Novo ${index + 1})`, category: 'Pets', price: 'R$ 79,90', image, tag: '' })),
 ]
 
 const icon = (name) => ({
@@ -58,18 +89,20 @@ document.querySelector('#app').innerHTML = `
 
     <section class="ticker" aria-label="Diferenciais"><div>IMPRESSÃO PRECISA <span>✦</span> DESIGN AUTORAL <span>✦</span> FEITO NO BRASIL <span>✦</span> IMPRESSÃO PRECISA <span>✦</span> DESIGN AUTORAL <span>✦</span> FEITO NO BRASIL <span>✦</span></div></section>
 
-    <section class="collection section" id="colecao"><div class="section-heading"><div><p class="eyebrow"><span></span> Coleção JG</p><h2>Leve seu pet<br><em>com você.</em></h2></div><p class="section-intro">Do retrato mais fiel ao presente mais criativo: peças feitas para celebrar quem faz parte da família.</p></div><div class="custom-product-note"><strong>Pets personalizados: R$ 79,90</strong><span>Escolha o modelo, envie uma foto e receba uma peça personalizada do seu pet.</span></div><div class="catalog-toolbar"><div class="filters" role="group" aria-label="Filtrar produtos"><button class="filter active" data-filter="Todos">Todos</button><button class="filter" data-filter="Pets">Pets</button><button class="filter" data-filter="Chaveiros">Chaveiros</button><button class="filter" data-filter="Luminárias">Luminárias</button><button class="filter" data-filter="Casa">Casa</button></div><span class="product-count">14 peças</span></div><div class="product-grid" id="product-grid"></div></section>
+    <section class="collection section" id="colecao"><div class="section-heading"><div><p class="eyebrow"><span></span> Coleção JG</p><h2>Leve seu pet<br><em>com você.</em></h2></div><p class="section-intro">Do retrato mais fiel ao presente mais criativo: peças feitas para celebrar quem faz parte da família.</p></div><div class="custom-product-note"><strong>PET PERSONALIZADO POR R$ 79,90</strong><span>Envie uma foto do seu pet e receba uma peça feita sob medida para você.</span></div><div class="catalog-toolbar"><div class="filters" role="group" aria-label="Filtrar produtos"><button class="filter active" data-filter="Todos">Todos</button><button class="filter" data-filter="Pets">Pets</button><button class="filter" data-filter="Chaveiros">Chaveiros</button><button class="filter" data-filter="Luminárias">Luminárias</button><button class="filter" data-filter="Casa">Casa</button></div><span class="product-count">${products.length} peças</span></div><div class="product-grid" id="product-grid"></div></section>
 
     <section class="manifesto section" id="sobre"><div class="manifesto-mark"><img src="${logo1}" alt="Logo JGPrint3D" /></div><div><p class="eyebrow"><span></span> A nossa ideia</p><h2>Memórias que<br><em>cabem na mão.</em></h2><p>Na JGPrint3D, cada pet tem um jeitinho único. Por isso, criamos peças sob demanda que transformam fotos, histórias e muito amor em algo que você pode guardar, presentear e levar para todo lugar.</p><a class="text-link" href="#processo">Veja como funciona ${icon('arrow')}</a></div></section>
 
     <section class="process section" id="processo"><div class="section-heading"><div><p class="eyebrow"><span></span> Do pedido à sua casa</p><h2>Seu pet em<br><em>três passos.</em></h2></div></div><div class="process-grid"><div><b>01</b><h3>Você envia</h3><p>Mande uma foto do seu pet pelo WhatsApp e escolha o produto que mais combina.</p></div><div><b>02</b><h3>A gente cria</h3><p>Modelamos cada detalhe, mostramos uma prévia e ajustamos até ficar com a sua cara.</p></div><div><b>03</b><h3>Você recebe</h3><p>Sua peça é impressa, revisada e enviada com cuidado para chegar perfeita.</p></div></div></section>
 
-    <section class="contact section" id="contato"><div><p class="eyebrow"><span></span> Quer personalizar?</p><h2>Seu pet merece<br><em>uma peça só dele.</em></h2></div><div class="contact-cta"><p>Envie uma foto e conte para a gente qual ideia você quer tirar do papel.</p><div class="contact-button-box"><a class="button button-light" href="https://wa.me/5585986144646?text=Ol%C3%A1%2C%20quero%20fazer%20um%20or%C3%A7amento%20na%20JGPrint3D." target="_blank" rel="noreferrer">Pedir orçamento ${icon('arrow')}</a></div></div></section>
+    <section class="contact section" id="contato"><div><p class="eyebrow"><span></span> SEU PET, DO SEU JEITO</p><h2>Uma lembrança<br><em>só dele.</em></h2></div><div class="contact-cta"><p>Envie uma foto e conte para a gente qual ideia você quer tirar do papel.</p><div class="contact-button-box"><a class="button button-light" href="https://wa.me/5585986144646?text=Ol%C3%A1%2C%20quero%20fazer%20um%20or%C3%A7amento%20na%20JGPrint3D." target="_blank" rel="noreferrer">Pedir orçamento ${icon('arrow')}</a></div></div></section>
   </main>
-  <footer><a class="brand" href="#top"><i class="brand-mark"><b>J</b><b>G</b></i>PRINT3D</a><p>Seu pet em uma peça para sempre. © 2025 JGPrint3D.</p></footer>
+  <footer><p>Seu pet em uma peça para sempre. © 2025 JGPrint3D.</p></footer>
   <div class="search-panel" aria-hidden="true"><button class="close-search" aria-label="Fechar pesquisa">×</button><label for="search-input">O que você está procurando?</label><input id="search-input" type="search" placeholder="Buscar peças..." /></div>
   <aside class="cart-panel" aria-hidden="true"><button class="close-cart" aria-label="Fechar carrinho">×</button><h2>Seu carrinho</h2><div class="cart-items"></div><div class="cart-footer"><strong class="cart-total">Total: R$ 0,00</strong><a class="button" data-action="checkout" href="https://wa.me/5585986144646" target="_blank" rel="noreferrer">Finalizar pedido ${icon('arrow')}</a></div></aside>
   <button class="floating-cart" data-action="cart" aria-label="Abrir carrinho"><span>0</span>${icon('bag')}</button>
+  <a class="floating-whatsapp" href="https://wa.me/5585986144646" target="_blank" rel="noreferrer" aria-label="Falar no WhatsApp">${icon('whatsapp')}</a>
+  <a class="floating-instagram" href="https://www.instagram.com/jg_print3d/" target="_blank" rel="noreferrer" aria-label="Abrir Instagram">${icon('instagram')}</a>
   <div class="image-modal" aria-hidden="true"><button class="close-image-modal" aria-label="Fechar imagem">×</button><img src="" alt="" /></div>
 `
 
