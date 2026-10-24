@@ -105,6 +105,7 @@ footer { max-width: 1440px; margin: 0 auto; padding: 28px 10vw; display: flex; a
 .contact-button-box .button { width: 100%; justify-content: space-between; }
 body { text-align: justify; }
 .site-header, .site-notice, .brand, .desktop-nav, .button, .social-button, .filter, .ticker, .image-label, .circle-stamp, .manifesto-mark, .product-count, .close-search, .close-cart, .close-image-modal, .floating-cart { text-align: center; }
+.hero-copy h1, h2, h3 { text-align: left; }
 .hero-copy h1 { font-size: clamp(52px, 6vw, 88px); }
 .section h2, .contact h2 { font-size: clamp(42px, 5vw, 68px); }
 .product-info h3 { font-size: 16px; }
