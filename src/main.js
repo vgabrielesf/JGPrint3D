@@ -14,7 +14,6 @@ import produto12 from './assets/produto-12.jpeg'
 import produto13 from './assets/produto-13.jpeg'
 import produto14 from './assets/produto-14.jpeg'
 import logo1 from './assets/logo1.png'
-import christmasHat from './assets/Chapéu de Natal Vermelho com Pompom.png'
 
 const newPetImages = import.meta.glob('./assets/WhatsApp*.jpeg', { eager: true, import: 'default', query: '?url' })
 const newPetImageOrder = [
@@ -151,7 +150,7 @@ document.querySelector('#app').innerHTML = `
   <main id="top">
     <div class="site-notice" role="status"><span>AVISO</span> Site em construção</div>
     <section class="hero-section">
-      <div class="hero-copy reveal"><p class="eyebrow"><span></span> Seu pet, do seu jeito</p><h1>O amor qu<span class="holiday-letter">e<img class="christmas-hat" src="${christmasHat}" alt="" aria-hidden="true"></span><br><em>vira peça.</em></h1><p class="hero-text">Transformamos a personalidade do seu melhor amigo em bonecos, chaveiros e presentes feitos sob medida, com carinho em cada detalhe.</p><div class="hero-actions"><a class="social-button" href="https://www.instagram.com/jg_print3d/" target="_blank" rel="noreferrer">${icon('instagram')} Instagram</a><a class="social-button" href="https://wa.me/5585986144646" target="_blank" rel="noreferrer">${icon('whatsapp')} WhatsApp</a><a class="button" href="#colecao">Ver produtos ${icon('arrow')}</a></div><div class="hero-proof"><strong>100%</strong><span>personalizado<br>para você</span></div></div>
+      <div class="hero-copy reveal"><p class="eyebrow"><span></span> Seu pet, do seu jeito</p><h1>O amor que<br><em>vira peça.</em></h1><p class="hero-text">Transformamos a personalidade do seu melhor amigo em bonecos, chaveiros e presentes feitos sob medida, com carinho em cada detalhe.</p><div class="hero-actions"><a class="social-button" href="https://www.instagram.com/jg_print3d/" target="_blank" rel="noreferrer">${icon('instagram')} Instagram</a><a class="social-button" href="https://wa.me/5585986144646" target="_blank" rel="noreferrer">${icon('whatsapp')} WhatsApp</a><a class="button" href="#colecao">Ver produtos ${icon('arrow')}</a></div><div class="hero-proof"><strong>100%</strong><span>personalizado<br>para você</span></div></div>
       <div class="hero-visual reveal"><div class="hero-image-wrap"><img src="${produto12}" alt="Produto personalizado JGPrint3D em destaque" /><div class="image-label">01 <span>/</span> feito para guardar</div></div><div class="circle-stamp">FEITO<br><b>COM AMOR</b><small>✦</small></div></div>
     </section>
 

@@ -94,8 +94,6 @@ footer { max-width: 1440px; margin: 0 auto; padding: 28px 10vw; display: flex; a
 .floating-instagram { position: fixed; right: 24px; bottom: 152px; z-index: 9; width: 54px; height: 54px; border-radius: 50%; background: #e1306c; color: white; display: grid; place-items: center; box-shadow: 0 8px 20px rgba(23, 34, 37, .2); }
 .floating-instagram svg { width: 24px; height: 24px; }
 .contact h2 em, .contact-cta p { color: var(--ink); }
-.holiday-letter { position: relative; display: inline-block; }
-.christmas-hat { position: absolute; left: 80%; top: -28px; width: 60px; height: auto; transform: translateX(-45%) rotate(8deg); }
 .site-header .bag-button span { top: -4px !important; right: -5px; width: auto; height: auto; border-radius: 0; background: transparent; color: var(--ink); line-height: 1; text-align: center; }
 .floating-cart span { line-height: 19px; text-align: center; }
 .product-grid { gap: 16px 3px; }
