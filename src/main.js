@@ -14,6 +14,7 @@ import produto12 from './assets/produto-12.jpeg'
 import produto13 from './assets/produto-13.jpeg'
 import produto14 from './assets/produto-14.jpeg'
 import logo1 from './assets/logo1.png'
+import christmasHat from './assets/Chapéu de Natal Vermelho com Pompom.png'
 
 const newPetImages = import.meta.glob('./assets/WhatsApp*.jpeg', { eager: true, import: 'default', query: '?url' })
 const newPetImageOrder = [
@@ -60,8 +61,75 @@ const products = [
   { name: 'Luminária Lua', category: 'Luminárias', price: 'R$ 139,99', image: produto12, tag: 'Edição especial' },
   { name: 'Pet personalizado (Madalena)', category: 'Pets', price: 'R$ 79,90', image: produto13, tag: '' },
   { name: 'Pet personalizado (Lorenzo)', category: 'Pets', price: 'R$ 79,90', image: produto14, tag: 'Mais pedido' },
-  ...Object.entries(newPetImages).sort(([firstPath], [secondPath]) => newPetImageOrder.indexOf(firstPath.split('/').pop()) - newPetImageOrder.indexOf(secondPath.split('/').pop())).map(([, image], index) => ({ name: `Pet personalizado (Novo ${index + 1})`, category: 'Pets', price: 'R$ 79,90', image, tag: '' })),
+  ...Object.entries(newPetImages).sort(([firstPath], [secondPath]) => newPetImageOrder.indexOf(firstPath.split('/').pop()) - newPetImageOrder.indexOf(secondPath.split('/').pop())).map(([, image], index) => ({ name: 'Pet personalizado', sortName: `Pet personalizado (Novo ${index + 1})`, category: 'Pets', price: 'R$ 79,90', image, tag: '' })),
 ]
+
+const catalogImageOrder = [
+  'produto-01.jpeg', 'produto-02.jpeg', 'WhatsApp Image 2026-10-24 at 14.05.14 (5).jpeg', 'WhatsApp Image 2026-10-24 at 14.05.15.jpeg',
+  'WhatsApp Image 2026-10-24 at 14.05.14 (3).jpeg', 'WhatsApp Image 2026-10-24 at 14.05.14 (4).jpeg', 'WhatsApp Image 2026-10-24 at 14.05.13 (3).jpeg', 'WhatsApp Image 2026-10-24 at 14.05.13 (2).jpeg',
+  'WhatsApp Image 2026-10-24 at 14.05.14 (1).jpeg', 'WhatsApp Image 2026-10-24 at 14.05.14.jpeg', 'WhatsApp Image 2026-10-24 at 14.05.14 (2).jpeg', 'WhatsApp Image 2026-10-24 at 14.05.15 (1).jpeg',
+  'WhatsApp Image 2026-10-24 at 14.04.50 (1).jpeg', 'produto-06.jpeg', 'WhatsApp Image 2026-10-24 at 14.04.52.jpeg', 'WhatsApp Image 2026-10-24 at 14.04.50.jpeg',
+  'WhatsApp Image 2026-10-24 at 14.04.50 (2).jpeg', 'WhatsApp Image 2026-10-24 at 14.05.13 (1).jpeg', 'WhatsApp Image 2026-10-24 at 14.05.15 (3).jpeg', 'WhatsApp Image 2026-10-24 at 14.05.16.jpeg',
+  'WhatsApp Image 2026-10-24 at 14.05.15 (2).jpeg', 'produto-05.jpeg', 'WhatsApp Image 2026-10-24 at 14.05.17 (2).jpeg', 'WhatsApp Image 2026-10-24 at 14.05.17.jpeg',
+  'WhatsApp Image 2026-10-24 at 14.05.16 (1).jpeg', 'WhatsApp Image 2026-10-24 at 14.05.17 (1).jpeg', 'produto-11.jpeg', 'WhatsApp Image 2026-10-24 at 14.05.17 (3).jpeg',
+  'produto-07.jpeg', 'WhatsApp Image 2026-10-24 at 14.05.12 (1).jpeg', 'WhatsApp Image 2026-10-24 at 14.05.13.jpeg', 'produto-03.jpeg',
+  'produto-14.jpeg', 'produto-09.jpeg', 'produto-13.jpeg', 'WhatsApp Image 2026-10-24 at 14.05.12.jpeg', 'produto-10.jpeg',
+  'produto-08.jpeg', 'produto-04.jpeg', 'produto-12.jpeg',
+]
+const fileName = (image) => decodeURIComponent(image).split('/').pop()
+products.sort((first, second) => catalogImageOrder.indexOf(fileName(first.image)) - catalogImageOrder.indexOf(fileName(second.image)))
+const renamedProduct = products.find((product) => product.sortName === 'Pet personalizado (Novo 22)')
+if (renamedProduct) renamedProduct.sortName = 'Pet personalizado (Novo 25)'
+const medidorProducts = ['Pet personalizado (Novo 16)', 'Pet personalizado (Novo 17)', 'Pet personalizado (Novo 18)']
+const bagueraProducts = ['Pet personalizado (Novo 10)', 'Pet personalizado (Novo 8)', 'Pet personalizado (Novo 11)']
+const oreoProducts = ['Pet personalizado (Novo 7)', 'Pet personalizado (Novo 4)', 'Pet personalizado (Novo 5)']
+const sergioAugustoProducts = ['Pet personalizado (Novo 12)', 'Pet personalizado (Novo 13)', 'Pet personalizado (Novo 1)']
+products.forEach((product) => {
+  const medidorPosition = medidorProducts.indexOf(product.sortName || product.name)
+  if (medidorPosition !== -1) {
+    product.name = 'Medidor para ração'
+    product.category = 'Casa'
+    product.price = 'R$ 49,90'
+    product.sortName = `Medidor para ração ${medidorPosition + 1}`
+  }
+  if (bagueraProducts.includes(product.sortName)) product.name = 'Pet personalizado (Baguera)'
+  if (oreoProducts.includes(product.sortName)) product.name = 'Pet personalizado (Oreo)'
+  if (sergioAugustoProducts.includes(product.sortName)) product.name = 'Pet personalizado (Sergio Augusto)'
+})
+const originalValentina = products.find((product) => product.name === 'Pet personalizado (Valentina)' && !product.sortName)
+if (originalValentina) originalValentina.sortName = 'Valentina 1'
+const additionalValentinas = ['Pet personalizado (Novo 25)', 'Pet personalizado (Novo 21)']
+products.forEach((product) => {
+  const valentinaPosition = additionalValentinas.indexOf(product.sortName)
+  if (valentinaPosition !== -1) {
+    product.name = 'Pet personalizado (Valentina)'
+    product.sortName = `Valentina ${valentinaPosition + 2}`
+  }
+})
+const customKeychains = ['Chaveiros de anime', 'Chaveiros pet cachorro e gato']
+products.forEach((product) => {
+  const keychainPosition = customKeychains.indexOf(product.name)
+  if (keychainPosition !== -1) {
+    product.name = 'Chaveiro personalizado'
+    product.sortName = `Chaveiro personalizado ${keychainPosition + 1}`
+  }
+})
+const requestedProductOrder = [
+  'Pet personalizado (Novo 2)', 'Pet personalizado (Oreo)', 'Pet personalizado (Baguera)', 'Pet personalizado (Novo 10)',
+  'Pet personalizado (Novo 8)', 'Pet personalizado (Novo 11)', 'Pet personalizado (Novo 7)', 'Pet personalizado (Novo 4)',
+  'Pet personalizado (Novo 5)', 'Pet personalizado (Novo 12)', 'Pet personalizado (Novo 13)', 'Pet personalizado (Novo 1)',
+  'Valentina 1', 'Valentina 2', 'Valentina 3',
+  'Pet personalizado (Din)', 'Chaveiro personalizado 1', 'Chaveiro personalizado 2', 'Pet personalizado (Novo 19)', 'Pet personalizado (Novo 20)',
+  'Pet personalizado (Tufão)', 'Pet personalizado (Lorenzo)', 'Pet personalizado (Nico)', 'Pet personalizado (Novo 26)',
+  'Pet personalizado (Sarinha)', 'Pet personalizado (Madalena)', 'Medidor para ração 1', 'Medidor para ração 2', 'Medidor para ração 3',
+  'Luminária Lua', 'Pet personalizado (Novo 15)',
+]
+const removedProductNames = new Set(['Pet personalizado (Novo 3)', 'Pet personalizado (Novo 6)', 'Pet personalizado (Novo 9)', 'Pet personalizado (Novo 14)', 'Pet personalizado (Novo 23)', 'Pet personalizado (Novo 24)'])
+products.splice(0, products.length, ...products.filter((product) => !removedProductNames.has(product.sortName || product.name)).sort((first, second) => {
+  const firstPosition = requestedProductOrder.indexOf(first.sortName || first.name)
+  const secondPosition = requestedProductOrder.indexOf(second.sortName || second.name)
+  return (firstPosition === -1 ? requestedProductOrder.length : firstPosition) - (secondPosition === -1 ? requestedProductOrder.length : secondPosition)
+}))
 
 const icon = (name) => ({
   arrow: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>',
@@ -83,7 +151,7 @@ document.querySelector('#app').innerHTML = `
   <main id="top">
     <div class="site-notice" role="status"><span>AVISO</span> Site em construção</div>
     <section class="hero-section">
-      <div class="hero-copy reveal"><p class="eyebrow"><span></span> Seu pet, do seu jeito</p><h1>O amor que<br><em>vira peça.</em></h1><p class="hero-text">Transformamos a personalidade do seu melhor amigo em bonecos, chaveiros e presentes feitos sob medida, com carinho em cada detalhe.</p><div class="hero-actions"><a class="social-button" href="https://www.instagram.com/jg_print3d/" target="_blank" rel="noreferrer">${icon('instagram')} Instagram</a><a class="social-button" href="https://wa.me/5585986144646" target="_blank" rel="noreferrer">${icon('whatsapp')} WhatsApp</a><a class="button" href="#colecao">Ver produtos ${icon('arrow')}</a></div><div class="hero-proof"><strong>100%</strong><span>personalizado<br>para você</span></div></div>
+      <div class="hero-copy reveal"><p class="eyebrow"><span></span> Seu pet, do seu jeito</p><h1>O amor qu<span class="holiday-letter">e<img class="christmas-hat" src="${christmasHat}" alt="" aria-hidden="true"></span><br><em>vira peça.</em></h1><p class="hero-text">Transformamos a personalidade do seu melhor amigo em bonecos, chaveiros e presentes feitos sob medida, com carinho em cada detalhe.</p><div class="hero-actions"><a class="social-button" href="https://www.instagram.com/jg_print3d/" target="_blank" rel="noreferrer">${icon('instagram')} Instagram</a><a class="social-button" href="https://wa.me/5585986144646" target="_blank" rel="noreferrer">${icon('whatsapp')} WhatsApp</a><a class="button" href="#colecao">Ver produtos ${icon('arrow')}</a></div><div class="hero-proof"><strong>100%</strong><span>personalizado<br>para você</span></div></div>
       <div class="hero-visual reveal"><div class="hero-image-wrap"><img src="${produto12}" alt="Produto personalizado JGPrint3D em destaque" /><div class="image-label">01 <span>/</span> feito para guardar</div></div><div class="circle-stamp">FEITO<br><b>COM AMOR</b><small>✦</small></div></div>
     </section>
 
