@@ -106,6 +106,10 @@ footer { max-width: 1440px; margin: 0 auto; padding: 28px 10vw; display: flex; a
 body { text-align: justify; }
 .site-header, .site-notice, .brand, .desktop-nav, .button, .social-button, .filter, .ticker, .image-label, .circle-stamp, .manifesto-mark, .product-count, .close-search, .close-cart, .close-image-modal, .floating-cart { text-align: center; }
 .hero-copy h1, h2, h3 { text-align: left; }
+.hero-copy h1, .hero-copy h1 em { text-align: left; }
+.custom-product-note { display: flex; align-items: baseline; gap: 18px; margin: -32px 0 32px; padding: 15px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); color: var(--muted); font-size: 12px; }
+.custom-product-note strong { color: var(--ink); font-size: 14px; font-weight: 600; }
+@media (max-width: 780px) { .custom-product-note { display: block; margin: -18px 0 25px; line-height: 1.6; } .custom-product-note strong, .custom-product-note span { display: block; } }
 .hero-copy h1 { font-size: clamp(52px, 6vw, 88px); }
 .section h2, .contact h2 { font-size: clamp(42px, 5vw, 68px); }
 .product-info h3 { font-size: 16px; }

@@ -16,20 +16,20 @@ import produto14 from './assets/produto-14.jpeg'
 import logo1 from './assets/logo1.png'
 
 const products = [
-  { name: 'Pet personalizado (Oreo)', category: 'Pets', price: 'R$ 79,99', image: produto01, tag: 'Mais pedido' },
-  { name: 'Pet personalizado (Baguera)', category: 'Pets', price: 'R$ 79,99', image: produto02, tag: 'Presente' },
-  { name: 'Pet personalizado (Tufão)', category: 'Pets', price: 'R$ 79,99', image: produto03, tag: 'Novo' },
-  { name: 'Pet personalizado (Valentina)', category: 'Pets', price: 'R$ 79,99', image: produto04, tag: '' },
+  { name: 'Pet personalizado (Oreo)', category: 'Pets', price: 'R$ 79,90', image: produto01, tag: 'Mais pedido' },
+  { name: 'Pet personalizado (Baguera)', category: 'Pets', price: 'R$ 79,90', image: produto02, tag: 'Presente' },
+  { name: 'Pet personalizado (Tufão)', category: 'Pets', price: 'R$ 79,90', image: produto03, tag: 'Novo' },
+  { name: 'Pet personalizado (Valentina)', category: 'Pets', price: 'R$ 79,90', image: produto04, tag: '' },
   { name: 'Medidor para ração', category: 'Casa', price: 'R$ 49,99', image: produto05, tag: '' },
-  { name: 'Pet personalizado (Din)', category: 'Pets', price: 'R$ 79,99', image: produto06, tag: '' },
+  { name: 'Pet personalizado (Din)', category: 'Pets', price: 'R$ 79,90', image: produto06, tag: '' },
   { name: 'Chaveiros de anime', category: 'Chaveiros', price: 'R$ 14,99', image: produto07, tag: '' },
   { name: 'Chaveiros pet cachorro e gato', category: 'Chaveiros', price: 'R$ 14,99', image: produto08, tag: 'Favorito' },
-  { name: 'Pet personalizado (Nico)', category: 'Pets', price: 'R$ 79,99', image: produto09, tag: '' },
-  { name: 'Pet personalizado (Sarinha)', category: 'Pets', price: 'R$ 79,99', image: produto10, tag: '' },
+  { name: 'Pet personalizado (Nico)', category: 'Pets', price: 'R$ 79,90', image: produto09, tag: '' },
+  { name: 'Pet personalizado (Sarinha)', category: 'Pets', price: 'R$ 79,90', image: produto10, tag: '' },
   { name: 'Caixa display personalizada', category: 'Casa', price: 'R$ 129', image: produto11, tag: '' },
   { name: 'Luminária Lua', category: 'Luminárias', price: 'R$ 139,99', image: produto12, tag: 'Edição especial' },
-  { name: 'Pet personalizado (Madalena)', category: 'Pets', price: 'R$ 79,99', image: produto13, tag: '' },
-  { name: 'Pet personalizado (Lorenzo)', category: 'Pets', price: 'R$ 79,99', image: produto14, tag: 'Mais pedido' },
+  { name: 'Pet personalizado (Madalena)', category: 'Pets', price: 'R$ 79,90', image: produto13, tag: '' },
+  { name: 'Pet personalizado (Lorenzo)', category: 'Pets', price: 'R$ 79,90', image: produto14, tag: 'Mais pedido' },
 ]
 
 const icon = (name) => ({
@@ -58,7 +58,7 @@ document.querySelector('#app').innerHTML = `
 
     <section class="ticker" aria-label="Diferenciais"><div>IMPRESSÃO PRECISA <span>✦</span> DESIGN AUTORAL <span>✦</span> FEITO NO BRASIL <span>✦</span> IMPRESSÃO PRECISA <span>✦</span> DESIGN AUTORAL <span>✦</span> FEITO NO BRASIL <span>✦</span></div></section>
 
-    <section class="collection section" id="colecao"><div class="section-heading"><div><p class="eyebrow"><span></span> Coleção JG</p><h2>Leve seu pet<br><em>com você.</em></h2></div><p class="section-intro">Do retrato mais fiel ao presente mais criativo: peças feitas para celebrar quem faz parte da família.</p></div><div class="catalog-toolbar"><div class="filters" role="group" aria-label="Filtrar produtos"><button class="filter active" data-filter="Todos">Todos</button><button class="filter" data-filter="Pets">Pets</button><button class="filter" data-filter="Chaveiros">Chaveiros</button><button class="filter" data-filter="Luminárias">Luminárias</button><button class="filter" data-filter="Casa">Casa</button></div><span class="product-count">14 peças</span></div><div class="product-grid" id="product-grid"></div></section>
+    <section class="collection section" id="colecao"><div class="section-heading"><div><p class="eyebrow"><span></span> Coleção JG</p><h2>Leve seu pet<br><em>com você.</em></h2></div><p class="section-intro">Do retrato mais fiel ao presente mais criativo: peças feitas para celebrar quem faz parte da família.</p></div><div class="custom-product-note"><strong>Pets personalizados: R$ 79,90</strong><span>As fotos são apenas exemplos. Envie a foto do seu pet e criamos uma peça só sua.</span></div><div class="catalog-toolbar"><div class="filters" role="group" aria-label="Filtrar produtos"><button class="filter active" data-filter="Todos">Todos</button><button class="filter" data-filter="Pets">Pets</button><button class="filter" data-filter="Chaveiros">Chaveiros</button><button class="filter" data-filter="Luminárias">Luminárias</button><button class="filter" data-filter="Casa">Casa</button></div><span class="product-count">14 peças</span></div><div class="product-grid" id="product-grid"></div></section>
 
     <section class="manifesto section" id="sobre"><div class="manifesto-mark"><img src="${logo1}" alt="Logo JGPrint3D" /></div><div><p class="eyebrow"><span></span> A nossa ideia</p><h2>Memórias que<br><em>cabem na mão.</em></h2><p>Na JGPrint3D, cada pet tem um jeitinho único. Por isso, criamos peças sob demanda que transformam fotos, histórias e muito amor em algo que você pode guardar, presentear e levar para todo lugar.</p><a class="text-link" href="#processo">Veja como funciona ${icon('arrow')}</a></div></section>
 
@@ -76,7 +76,7 @@ document.querySelector('#app').innerHTML = `
 const grid = document.querySelector('#product-grid')
 const renderProducts = (filter = 'Todos', query = '') => {
   const filtered = products.filter((product) => (filter === 'Todos' || product.category === filter) && product.name.toLowerCase().includes(query.toLowerCase()))
-  grid.innerHTML = filtered.length ? filtered.map((product) => `<article class="product-card"><div class="product-image"><button class="product-image-viewer" data-image="${product.image}" data-name="${product.name}" aria-label="Ampliar imagem de ${product.name}"><img src="${product.image}" alt="${product.name}" loading="lazy"></button><button class="quick-add" data-product-index="${products.indexOf(product)}" aria-label="Adicionar ${product.name} ao carrinho">+</button></div><div class="product-info"><div><h3>${product.name}</h3><strong>${product.price}</strong><p>${product.category}</p></div></div></article>`).join('') : '<p class="empty-state">Nenhuma peça encontrada. Tente outro termo.</p>'
+  grid.innerHTML = filtered.length ? filtered.map((product) => `<article class="product-card"><div class="product-image"><button class="product-image-viewer" data-image="${product.image}" data-name="${product.name}" aria-label="Ampliar imagem de ${product.name}"><img src="${product.image}" alt="${product.name}" loading="lazy"></button><button class="quick-add" data-product-index="${products.indexOf(product)}" aria-label="Adicionar ${product.name} ao carrinho">+</button></div><div class="product-info"><div><h3>${product.name}</h3><strong>${product.price}</strong><p>${product.category === 'Pets' ? 'Personalizado com sua foto' : product.category}</p></div></div></article>`).join('') : '<p class="empty-state">Nenhuma peça encontrada. Tente outro termo.</p>'
 }
 renderProducts()
 
